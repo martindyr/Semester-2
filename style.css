@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 400px;
+}
+
+form button {
+    width: 100px;
+    margin: 0 auto;
+}
+
+form input {
+    width: 100%;
+}
+
+.error {
+    display: none;
+    color: red;
+}
