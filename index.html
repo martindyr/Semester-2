@@ -27,8 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        <a class="nav-link" href="#">Features</a>
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="/allLots.html">All Lot's</a>
                     </div>
 
                 </div>
@@ -36,7 +35,7 @@
                     data-bs-target="#loginModal">
                     Login
                 </button>
-                <button id="register-btn" type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
                     data-bs-target="#registerModal">
                     Register
                 </button>
@@ -46,7 +45,64 @@
             </div>
         </nav>
     </header>
+
     <main>
+
+
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div>
+                        <img src="/image/carousel-1.jpg" class="d-block w-100" alt="">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/image/carousel-2.jpg" class="d-block w-100" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="/image/carousel-3.jpg" class="d-block w-100" alt="">
+                </div>
+            </div>
+        </div>
+
+        <h4>Newest Cars</h4>
+        <div class="card-group">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This card has even longer content than the first to show that equal height
+                        action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+
         <!-- Login Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -57,13 +113,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="formControlEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="loginEmail"
+                            <label for="login-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="login-email"
                                 placeholder="first.last@stud.noroff.no">
                         </div>
                         <div class="mb-3">
-                            <label for="formControlPassword" class="form-label">Password</label>
-                            <input type="email" class="form-control" id="loginPassword">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="email" class="form-control" id="login-password">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -83,40 +139,61 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="formControlEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="formControlEmail"
-                                placeholder="first.last@stud.noroff.no">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formControlPassword" class="form-label">Password</label>
-                            <input type="email" class="form-control" id="formControlPassword">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formControlName" class="form-label">Name</label>
-                            <input type="email" class="form-control" id="formControlName"
-                                placeholder="FirstName LastName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Profile Image</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button id="registerBtn" type="button" class="btn btn-primary">Save
-                                changes</button>
-                        </div>
+                        <form id="register-form">
+                            <div class="mb-3">
+                                <label for="register-email" class="form-label">Email address</label>
+                                <input id="register-email" type="email" class="form-control"
+                                    placeholder="name@stud.noroff.no">
+                                <div id="email-feedback" class="invalid-feedback">
+                                    Email must match this format - name@stud.noroff.no
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-password" class="form-label">Password</label>
+                                <input id="register-password" type="password" class="form-control">
+                                <div id="password-feedback" class="invalid-feedback">
+                                    Password must be at least 8 characters long
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-Name" class="form-label">Name</label>
+                                <input id="register-name" type="name" class="form-control"
+                                    placeholder="FirstName LastName">
+                                <div id="name-feedback" class="invalid-feedback">
+                                    name can not contain any signs other then "_"
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-avatar" class="form-label">Profile Image</label>
+                                <input id="register-avatar" class="form-control" type="file">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="register-btn" type="submit" class="btn btn-primary">Register user</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Notification -->
+        <div class="position-fixed bottom-0 start-50 translate-middle-x p-3 notification" style="z-index: 11">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body"></div>
+            </div>
+        </div>
+
     </main>
     <footer></footer>
+    <script src="/js/components/notification.js" type="module"></script>
     <script src="/js/components/logout.js" type="module"></script>
     <script src="/js/components/login.js" type="module"></script>
     <script src="/js/components/register.js" type="module"></script>
     <script src="/js/storage.js" type="module"></script>
     <script src="/js/components/toggleUserInterface.js" type="module"></script>
+
+    <!-- test -->
+    <script src="/js/service/auctionListing.js"></script>
 
 </body>
 
