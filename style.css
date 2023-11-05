@@ -17,3 +17,7 @@ main {
 .notification {
     z-index: 2000 !important;
 }
+
+.mandatory {
+    color: crimson;
+}
