@@ -7,13 +7,15 @@ function userLoggedIn() {
   }
 }
 
+console.log("function returns", userLoggedIn().length);
+
 // Function to show/hide elements based on login status
 export function toggleUI() {
   console.log("Toggeling UI");
   const loginElements = document.querySelectorAll(".logged-in");
   const logoutElements = document.querySelectorAll(".logged-out");
 
-  if (userLoggedIn()) {
+  if (userLoggedIn().length > 20) {
     console.log("User is logged in", userLoggedIn());
     loginElements.forEach((element) => {
       element.style.display = "block";
@@ -33,13 +35,13 @@ export function toggleUI() {
 }
 
 // Add an event listener to handle logout
-document.getElementById("logout-btn").addEventListener("click", () => {
+document.getElementById("logout-btn").addEventListener("click", function () {
   // Toggle the UI
   setTimeout(toggleUI, 500);
 });
 
 // Add an event listener to handle login
-document.getElementById("login-btn").addEventListener("click", () => {
+document.getElementById("login-btn").addEventListener("click", function () {
   // Toggle the UI
   setTimeout(toggleUI, 500);
 });

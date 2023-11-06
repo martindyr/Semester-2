@@ -10,7 +10,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-    </script>
+        </script>
     <title>All Lot's</title>
 </head>
 
@@ -18,7 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-lg sticky-top bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="/index.html">Dyrsets Lot Service</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -26,13 +26,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
                         <a class="nav-link" href="/allLots.html">All Lot's</a>
-                        <a class="nav-link" href="/myListings.html">My Lot's</a>
+                        <a class="nav-link logged-in" href="/myLots.html">My Lot's</a>
                     </div>
 
                 </div>
-                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal" id="login-btn"
                     data-bs-target="#loginModal">
                     Login
                 </button>
@@ -40,6 +40,7 @@
                     data-bs-target="#registerModal">
                     Register
                 </button>
+                <button id="profile-btn" type="button" class="btn btn-primary logged-in">Profile</button>
                 <button id="logout-btn" type="button" class="btn btn-primary logged-in">
                     Logout
                 </button>
@@ -85,10 +86,93 @@
         <div id="lot-list">
             <!-- Cards generated in js. -->
         </div>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="login-email"
+                                placeholder="first.last@stud.noroff.no">
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="email" class="form-control" id="login-password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="login-btn" type="button" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Register Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="register-form">
+                            <div class="mb-3">
+                                <label for="register-email" class="form-label">Email address</label>
+                                <input id="register-email" type="email" class="form-control"
+                                    placeholder="name@stud.noroff.no">
+                                <div id="email-feedback" class="invalid-feedback">
+                                    Email must match this format - name@stud.noroff.no
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-password" class="form-label">Password</label>
+                                <input id="register-password" type="password" class="form-control">
+                                <div id="password-feedback" class="invalid-feedback">
+                                    Password must be at least 8 characters long
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-Name" class="form-label">Name</label>
+                                <input id="register-name" type="name" class="form-control"
+                                    placeholder="FirstName LastName">
+                                <div id="name-feedback" class="invalid-feedback">
+                                    name can not contain any signs other then "_"
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="register-avatar" class="form-label">Profile Image</label>
+                                <input id="register-avatar" class="form-control" type="file">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="register-btn" type="submit" class="btn btn-primary">Register user</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Notification -->
+        <div class="position-fixed bottom-0 start-50 translate-middle-x p-3 notification" style="z-index: 11">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body"></div>
+            </div>
+        </div>
     </main>
     <footer></footer>
     <script src="/js/allLots.js" type="module"></script>
+    <script src="/js/storage.js" type="module"></script>
     <script src="/js/service/auctionListing.js" type="module"></script>
+    <script src="/js/components/toggleUserInterface.js" type="module"></script>
+
 </body>
 
 </html>
