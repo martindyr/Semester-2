@@ -1,4 +1,4 @@
-import { saveToken } from "../storage.js";
+import { saveToken, saveUserName } from "../storage.js";
 import { notification } from "../components/notification.js";
 /* Login request */
 export async function login() {
@@ -29,6 +29,7 @@ export async function login() {
 
     if (json.accessToken) {
       saveToken(json.accessToken);
+      saveUserName(json.name)
       notification("success", "Successfully Logged in");
     }
 

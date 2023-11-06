@@ -28,7 +28,7 @@
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
                         <a class="nav-link" href="/allLots.html">All Lot's</a>
-                        <a class="nav-link logged-out" href="/myLots.html">My Lot's</a>
+                        <a class="nav-link logged-in" href="/myLots.html">My Lot's</a>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
@@ -103,7 +103,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="login-password" class="form-label">Password</label>
-                            <input type="email" class="form-control" id="login-password">
+                            <input type="password" class="form-control" id="login-password">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -169,6 +169,7 @@
     </main>
     <footer></footer>
     <script src="/js/components/toggleUserInterface.js" type="module"></script>
+    <script src="/js/service/auctionProfile.js" type="module"></script>
     <script src="/js/components/notification.js" type="module"></script>
     <script src="/js/components/logout.js" type="module"></script>
     <script src="/js/components/login.js" type="module"></script>

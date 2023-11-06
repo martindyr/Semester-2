@@ -3,7 +3,6 @@ import { notification } from "../components/notification.js";
 
 export async function getLots(body) {
   const url = "https://api.noroff.dev/api/v1/auction/listings";
-  /* const body = {}; */
   try {
     const repsonse = await fetch(url + "?" + new URLSearchParams(body));
     const json = await repsonse.json();
