@@ -179,6 +179,44 @@
                 </div>
             </div>
         </div>
+
+                <!-- Profile Modal -->
+                <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="register-form">
+                                <div class="mb-3">
+                                    <label for="profile-email" class="form-label">Email address</label>
+                                    <input id="profile-email" type="email" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="profile-name" class="form-label">Name</label>
+                                    <input id="profile-name" type="name" class="form-control"
+                                        >
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="register-avatar" class="form-label">Profile Image</label>
+                                    <input id="register-avatar" class="form-control" type="file">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button id="register-btn" type="submit" class="btn btn-primary">Register user</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         <!-- Notification -->
         <div class="position-fixed bottom-0 start-50 translate-middle-x p-3 notification" style="z-index: 11">
             <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
