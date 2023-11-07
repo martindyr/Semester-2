@@ -49,8 +49,22 @@ submitFilter.addEventListener("click", submit);
 function generateList(lotList) {
   lotContainer.innerHTML = "";
   for (let i = 0; i < lotList.length; i++) {
-    lotContainer.innerHTML += `
-    <p>title: ${lotList[i].title}</p>`;
+    /* TODO set max height on images below */
+    lotContainer.innerHTML += 
+    `
+  <div class="col">
+    <div class="card h-100">
+     <img src="${lotList[i].media[0]}" class="card-img-top" alt="Missing Image...">
+     <div class="card-body">
+       <h5 class="card-title">${lotList[i].title}</h5>
+       <p class="card-text">${lotList[i].description}</p>
+     </div>
+     <div class="card-footer">
+       <small class="text-muted">${lotList[i].endsAt}</small>
+     </div>
+    </div>
+  </div>
+    `;
   }
 }
 

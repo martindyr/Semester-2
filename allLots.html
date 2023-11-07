@@ -48,42 +48,53 @@
         </nav>
     </header>
     <main>
-        <div>
-
-            <div>
-                <input class="form-input" type="input" value="" id="filter-sort-order">
+        <div class="row">
+            <div class="col">
+                <select class="form-input" id="filter-sort-order">
+                <option value="" selected>None</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+                </select>
                 <label class="form-check-label" for="filter-sort-order">
                     Sort Order
                 </label>
             </div>
-            <div>
+            <div class="col">
                 <input class="form-input" type="number" value="" id="filter-limit">
                 <label class="form-check-label" for="filter-limit">
                     Limit
                 </label>
             </div>
-            <div>
+            <div class="col">
                 <input class="form-input" type="number" value="" id="filter-offset">
                 <label class="form-check-label" for="filter-offset">
                     Offset
                 </label>
             </div>
-            <div>
-                <input class="form-input" type="input" value="" id="filter-sort">
+            <div class="col">
+                <select class="form-input" type="input" value="" id="filter-sort">
+                    <option value="" selected>None</option>
+                    <option value="title">Title</option>
+                    <option value="endsAt">Lot Ending</option>
+                    <option value="updated">Last Updated</option>
+                    <option value="created">Created</option>
+                </select>
                 <label class="form-check-label" for="filter-sort">
                     Sort
                 </label>
             </div>
-            <div>
+            <div class="col">
                 <input class="form-check-input" type="checkbox" value="" id="filter-show-inactive">
                 <label class="form-check-label" for="filter-show-inactive">
                     Show Inactive
                 </label>
             </div>
-            <input id="submit-filter" class="btn btn-primary" type="submit" value="Submit">
+            <div  class="col">
+                <input id="submit-filter" class="btn btn-primary" type="submit" value="Submit Filter">
+            </div>
         </div>
 
-        <div id="lot-list">
+        <div id="lot-list"  class="row row-cols-1 row-cols-md-3 g-4">
             <!-- Cards generated in js. -->
         </div>
 
@@ -168,10 +179,10 @@
         </div>
     </main>
     <footer></footer>
+    <script src="/js/components/toggleUserInterface.js" type="module"></script>
     <script src="/js/allLots.js" type="module"></script>
     <script src="/js/storage.js" type="module"></script>
     <script src="/js/service/auctionListing.js" type="module"></script>
-    <script src="/js/components/toggleUserInterface.js" type="module"></script>
 
 </body>
 

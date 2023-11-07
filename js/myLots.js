@@ -46,7 +46,8 @@ function generateList(list) {
   lotList.innerHTML = "";
   for (let i = 0; i < list.length; i++) {
     lotList.innerHTML += `
-    <p>title: ${list[i].title}</p>`;
+    <p>title: ${list[i].title}</p>
+`;
   }
 }
 generateList(myLots)
