@@ -168,7 +168,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="register-avatar" class="form-label">Profile Image</label>
-                                <input id="register-avatar" class="form-control" type="file">
+                                <input id="register-avatar" class="form-control" type="file" accept="image/*">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -180,40 +180,39 @@
             </div>
         </div>
 
-                <!-- Profile Modal -->
-                <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="profile-form">
-                                <div class="mb-3">
-                                    <label for="profile-email" class="form-label">Email address</label>
-                                    <input id="profile-email" type="email" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="profile-name" class="form-label">Name</label>
-                                    <input id="profile-name" type="name" class="form-control"
-                                        >
+        <!-- Profile Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="registerModalLabel">Register</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="profile-form">
+                            <div class="mb-3">
+                                <label for="profile-email" class="form-label">Email address</label>
+                                <input id="profile-email" type="email" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-name" class="form-label">Name</label>
+                                <input id="profile-name" type="name" class="form-control">
 
-                                </div>
-                                <div class="mb-3">
-                                    <label for="profile-avatar" class="form-label">Profile Image</label>
-                                    <input id="profile-avatar" class="form-control" type="file">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button id="update-btn" type="submit" class="btn btn-primary">Update user</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-avatar" class="form-label">Profile Image</label>
+                                <input id="profile-avatar" class="form-control" type="file" accept="image/*">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="update-btn" type="submit" class="btn btn-primary">Update user</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
