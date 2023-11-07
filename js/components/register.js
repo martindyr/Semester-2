@@ -29,7 +29,7 @@ form.addEventListener("submit", (event) => {
   // Validate Name
   const name = document.querySelector("#register-name");
   const nameFeedback = document.querySelector("#name-feedback");
-  if (validateName(name.value)) {
+  if (validateName(name.value) && name.value.length < 20) {
     nameFeedback.style.display = "none";
     validFields++;
   } else {
