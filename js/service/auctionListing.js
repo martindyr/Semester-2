@@ -14,6 +14,8 @@ export async function getLots(body) {
 }
 
 export async function createLot(lot) {
+  const backDropModal = document.querySelector(".modal-backdrop");
+  const createModal = document.querySelector("#create-lot-modal");
   const url = "https://api.noroff.dev/api/v1/auction/listings";
   const body = JSON.stringify(lot);
   const options = {
@@ -30,6 +32,8 @@ export async function createLot(lot) {
 
     if (json.id) {
       notification("success", `You have posted lot: ${json.title}`);
+      createModal.style.display = "none";
+      backDropModal.style.display = "none";
     }
     console.log(json);
   } catch (error) {
