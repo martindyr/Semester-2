@@ -50,8 +50,7 @@ function generateList(lotList) {
   lotContainer.innerHTML = "";
   for (let i = 0; i < lotList.length; i++) {
     /* TODO set max height on images below */
-    lotContainer.innerHTML += 
-    `
+    lotContainer.innerHTML += `
   <div class="col">
     <div class="card h-100">
      <img src="${lotList[i].media[0]}" class="card-img-top" alt="Missing Image...">
