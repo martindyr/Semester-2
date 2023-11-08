@@ -16,7 +16,7 @@ export async function getProfileLots(body) {
     try {
         const repsonse = await fetch(url + "?" + new URLSearchParams(body), options);
         const json = await repsonse.json();
-        console.log("Number of listings: ", json);
+        console.log("Profile Lots: ", json);
         return json;
     } catch (error) {
         console.log("We done goufe:", error);
