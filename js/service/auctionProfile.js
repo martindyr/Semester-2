@@ -1,5 +1,6 @@
 import {
-    getUserName, getToken
+    getUserName,
+    getToken
 } from "../storage.js";
 
 export async function getProfileLots(body) {
@@ -8,10 +9,10 @@ export async function getProfileLots(body) {
     const options = {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${getToken()}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
         },
-      };
+    };
     try {
         const repsonse = await fetch(url + "?" + new URLSearchParams(body), options);
         const json = await repsonse.json();
@@ -21,4 +22,23 @@ export async function getProfileLots(body) {
         console.log("We done goufe:", error);
     }
 }
-getProfileLots()
+
+export async function getMyProfile() {
+    const name = getUserName()
+    const url = `https://api.noroff.dev/api/v1/auction/profiles/${name}`;
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+        },
+    };
+    try {
+        const repsonse = await fetch(url, options);
+        const json = await repsonse.json();
+        console.log("Profile Info", json);
+        return json;
+    } catch (error) {
+        console.log("We done goufe:", error);
+    }
+}

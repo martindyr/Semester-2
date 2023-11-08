@@ -3,7 +3,6 @@ import { getLots } from "./service/auctionListing.js";
 const submitFilter = document.querySelector("#submit-filter");
 const showInactive = document.querySelector("#filter-show-inactive");
 const limit = document.querySelector("#filter-limit");
-const offset = document.querySelector("#filter-offset");
 const sort = document.querySelector("#filter-sort");
 const sortOrder = document.querySelector("#filter-sort-order");
 
@@ -22,11 +21,6 @@ async function submit() {
   if (limit.value) {
     Object.assign(filter, {
       limit: limit.value,
-    });
-  }
-  if (offset.value) {
-    Object.assign(filter, {
-      offset: offset.value,
     });
   }
   if (sort.value) {
