@@ -1,4 +1,5 @@
 import { getLots } from "./service/auctionListing.js";
+import { countdown } from "./components/countdown.js";
 
 const submitFilter = document.querySelector("#submit-filter");
 const showInactive = document.querySelector("#filter-show-inactive");
@@ -43,6 +44,7 @@ submitFilter.addEventListener("click", submit);
 function generateList(lotList) {
   lotContainer.innerHTML = "";
   for (let i = 0; i < lotList.length; i++) {
+    const countdownElement = countdown(lotList[i].endsAt);
     /* TODO set max height on images below */
     lotContainer.innerHTML += `
   <div class="col">
@@ -53,12 +55,13 @@ function generateList(lotList) {
        <p class="card-text">${lotList[i].description}</p>
      </div>
      <div class="card-footer">
-       <small class="text-muted">${lotList[i].endsAt}</small>
+       <small class="text-muted">${countdownElement.innerHTML}</small>
      </div>
     </div>
   </div>
     `;
   }
 }
-
+/* HACK to refresh timer */
+const intervalId = setInterval(submit, 5000);
 submit();
