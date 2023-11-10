@@ -13,6 +13,18 @@ export async function getLots(body) {
   }
 }
 
+export async function getLotDetails(id) {
+  const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
+  try {
+    const repsonse = await fetch(url);
+    const json = await repsonse.json();
+    console.log("Lot Details: ", json);
+    return json;
+  } catch (error) {
+    console.log("We done goufe:", error);
+  }
+}
+
 export async function createLot(lot) {
   const backDropModal = document.querySelector(".modal-backdrop");
   const createModal = document.querySelector("#create-lot-modal");

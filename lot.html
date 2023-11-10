@@ -11,7 +11,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
         </script>
-    <title>All Lot's</title>
+    <title>Lot</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                     </div>
 
                 </div>
-                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal" id="login-btn"
+                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
                     data-bs-target="#loginModal">
                     Login
                 </button>
@@ -40,6 +40,7 @@
                     data-bs-target="#registerModal">
                     Register
                 </button>
+                <!-- TODO Create profile information w/option to add image -->
                 <button id="profile-btn" type="button" class="btn btn-primary logged-in" data-bs-toggle="modal"
                     data-bs-target="#profile-modal">Profile</button>
                 <button id="logout-btn" type="button" class="btn btn-primary logged-in">
@@ -49,51 +50,7 @@
         </nav>
     </header>
     <main>
-        <div class="container">
-            <div class="row">
-
-                <div class="form-floating col">
-                    <select class="form-input form-control" type="input" value="" id="filter-sort">
-                        <option selected value="title">Title</option>
-                        <option value="endsAt">Lot Ending</option>
-                        <option value="updated">Last Updated</option>
-                        <option value="created">Created</option>
-                    </select>
-                    <label class="form-check-label" for="filter-sort">
-                        Sort
-                    </label>
-                </div>
-                <div class="form-floating col">
-                    <select class="form-input form-control" id="filter-sort-order">
-                        <option selected value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                    <label class="form-check-label" for="filter-sort-order">
-                        Sort Order
-                    </label>
-                </div>
-                <div class="form-floating col">
-                    <input class="form-input form-control" type="number" value="" id="filter-limit">
-                    <label class="form-check-label" for="filter-limit">
-                        Limit
-                    </label>
-                </div>
-                <div class="col">
-                    <input class="form-check-input" type="checkbox" value="" id="filter-show-inactive">
-                    <label class="form-check-label" for="filter-show-inactive">
-                        Exclude Inactive's
-                    </label>
-                </div>
-                <div class="col">
-                    <input id="submit-filter" class="btn btn-primary" type="submit" value="Submit Filter">
-                </div>
-            </div>
-
-            <div id="lot-list" class="row row-cols-1 row-cols-md-3 g-4">
-                <!-- Cards generated in js. -->
-            </div>
-        </div>
-
+        <div class="dobdob"></div>
         <!-- Login Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -181,11 +138,11 @@
                         <form id="profile-form">
                             <div class="mb-3">
                                 <label for="profile-name" class="form-label">Name</label>
-                                <input id="profile-name" type="name" class="form-control">
+                                <input id="profile-name" type="name" class="form-control" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="profile-email" class="form-label">Email address</label>
-                                <input id="profile-email" type="email" class="form-control">
+                                <input id="profile-email" type="email" class="form-control" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="profile-avatar" class="form-label">Profile Image (URL)</label>
@@ -202,6 +159,8 @@
             </div>
         </div>
 
+
+
         <!-- Notification -->
         <div class="position-fixed bottom-0 start-50 translate-middle-x p-3 notification" style="z-index: 11">
             <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -210,12 +169,8 @@
         </div>
     </main>
     <footer></footer>
-    <script src="/js/allLots.js" type="module"></script>
-    <script src="/js/components/profile.js" type="module"></script>
-    <script src="/js/storage.js" type="module"></script>
+    <script src="/js/lot.js" type="module"></script>
     <script src="/js/service/auctionListing.js" type="module"></script>
-    <script src="/js/components/toggleUserInterface.js" type="module"></script>
-
 </body>
 
 </html>

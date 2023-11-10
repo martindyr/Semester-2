@@ -26,7 +26,6 @@ export function countdown(targetDate) {
       countdownElement.textContent = `Countdown: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
     }
   }
-
   updateCountdown();
 
   return countdownElement;
