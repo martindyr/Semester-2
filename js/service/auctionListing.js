@@ -1,5 +1,9 @@
-import { getToken } from "../storage.js";
-import { notification } from "../components/notification.js";
+import {
+  getToken
+} from "../storage.js";
+import {
+  notification
+} from "../components/notification.js";
 
 export async function getLots(body) {
   const url = "https://api.noroff.dev/api/v1/auction/listings";
@@ -16,7 +20,10 @@ export async function getLots(body) {
 export async function getLotDetails(id) {
   const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
   try {
-    const repsonse = await fetch(url);
+    const repsonse = await fetch(url + "?" + new URLSearchParams({
+      _seller: true,
+      _bids: true,
+    }));
     const json = await repsonse.json();
     console.log("Lot Details: ", json);
     return json;
@@ -50,5 +57,30 @@ export async function createLot(lot) {
     console.log(json);
   } catch (error) {
     console.log("Something went wrong when creating listing", error);
+  }
+}
+
+export async function placeBid(id, amount) {
+  const parsedAmount = parseFloat(amount);
+  const url = `https://api.noroff.dev/api/v1/auction/listings/${id}/bids`;
+  const options = {
+    method: "POST",
+    body: JSON.stringify({ amount: parsedAmount }), // Convert object to JSON string
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`,
+    },
+  };
+  try {
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log('created lot:', json);
+
+    if (json.id) {
+      notification("success", `You have placed a bid`);
+    }
+    console.log(json);
+  } catch (error) {
+    console.log("Something went wrong when placing a bid", error);
   }
 }

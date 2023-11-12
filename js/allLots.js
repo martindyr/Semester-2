@@ -1,6 +1,12 @@
-import { getLots } from "./service/auctionListing.js";
-import { countdown } from "./components/countdown.js";
-import { toggleUI } from "./components/toggleUserInterface.js";
+import {
+  getLots
+} from "./service/auctionListing.js";
+import {
+  countdown
+} from "./components/countdown.js";
+import {
+  toggleUI
+} from "./components/toggleUserInterface.js";
 
 const submitFilter = document.querySelector("#submit-filter");
 const showInactive = document.querySelector("#filter-show-inactive");
@@ -36,6 +42,12 @@ async function submit() {
       sortOrder: sortOrder.value,
     });
   }
+  Object.assign(filter, {
+    _seller: true,
+  })
+  Object.assign(filter, {
+    _bids: true,
+  })
   console.log("Current filter:", filter);
   const filteredLotList = await getLots(filter);
   generateList(filteredLotList);
@@ -59,6 +71,8 @@ function generateList(lotList) {
      <div class="card-body">
        <h5 class="card-title">${lotList[i].title}</h5>
        <p class="card-text">${lotList[i].description}</p>
+       <p class="card-text">Seller: ${lotList[i].seller.name}</p>
+       <p class="card-text">Current bid: ${lotList[i].bids && lotList[i].bids.length > 0 ? `${lotList[i].bids[0].amount} by ${lotList[i].bids[0].bidderName}` : 'no bids'} </p>
        <a href="lot.html?id=${lotList[i].id}">See details</a>
      </div>
      <div class="card-footer">
