@@ -56,8 +56,9 @@ async function generateLotDetails() {
 bidBtn.addEventListener("click", async function () {
   const bidAmount = document.querySelector("#bid-amount").value;
   const lotId = lot.id;
-  if (bidAmount && bidAmount > lot.bids.slice(-1)[0].amount) {
+  if (bidAmount) {
     await placeBid(lotId, bidAmount);
+    invalidFeedback.style.display = "none";
     generateLotDetails();
   } else {
     invalidFeedback.style.display = "block";

@@ -1,5 +1,11 @@
-import { createLot, deleteLot, updateLot } from "./service/auctionListing.js";
-import { getProfileLots } from "./service/auctionProfile.js";
+import {
+  createLot,
+  deleteLot,
+  updateLot
+} from "./service/auctionListing.js";
+import {
+  getProfileLots
+} from "./service/auctionProfile.js";
 
 /* Lot Form */
 const lotForm = document.querySelector("form");
@@ -105,18 +111,23 @@ function attachUpdateListeners(list) {
         updateBtn.addEventListener("click", async function (event) {
           event.preventDefault();
           const updatedLot = {};
+          if (titleInput.value != selectedObject.title) {
+            Object.assign(updatedLot, {
+              title: titleInput.value,
+            });
+          }
 
-          Object.assign(updatedLot, {
-            title: titleInput.value,
-          });
+          if (descriptionInput.value != selectedObject.description) {
+            Object.assign(updatedLot, {
+              description: descriptionInput.value,
+            });
+          }
 
-          Object.assign(updatedLot, {
-            description: descriptionInput.value,
-          });
-
-          Object.assign(updatedLot, {
-            media: mediaInput.value,
-          });
+          if (mediaInput.value != selectedObject.media) {
+            Object.assign(updatedLot, {
+              media: [mediaInput.value],
+            });
+          }
 
           console.log("Updated Lot Object:", updatedLot);
           await updateLot(selectedObject.id, updatedLot);

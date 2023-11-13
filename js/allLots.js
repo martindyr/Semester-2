@@ -72,7 +72,7 @@ function generateList(lotList) {
        <p class="card-text">Seller: ${lotList[i].seller.name}</p>
        <p class="card-text">Current bid: ${
          lotList[i].bids && lotList[i].bids.length > 0
-           ? `${lotList[i].bids[0].amount} by ${lotList[i].bids[0].bidderName}`
+           ? `${lotList[i].bids.slice(-1)[0].amount} by ${lotList[i].bids.slice(-1)[0].bidderName}`
            : "no bids"
        } </p>
        <a href="lot.html?id=${lotList[i].id}">See details</a>
