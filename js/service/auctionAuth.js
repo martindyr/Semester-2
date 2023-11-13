@@ -3,9 +3,6 @@ import { notification } from "../components/notification.js";
 
 /* Login request */
 export async function login() {
-  const backDropModal = document.querySelector(".modal-backdrop");
-  const loginModal = document.querySelector("#loginModal");
-
   console.log("Running login...");
   const emailField = document.querySelector("#login-email");
   const passwordField = document.querySelector("#login-password");
@@ -34,8 +31,7 @@ export async function login() {
     if (json.accessToken) {
       saveToken(json.accessToken);
       saveUserName(json.name);
-      loginModal.style.display = "none";
-      backDropModal.style.display = "none";
+      $("#loginModal").modal("hide");
       notification("success", "Successfully Logged in");
     }
 
