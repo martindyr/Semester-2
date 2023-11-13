@@ -98,6 +98,8 @@ function attachUpdateListeners(list) {
         titleInput.value = selectedObject.title;
         let descriptionInput = document.querySelector("#update-description");
         descriptionInput.value = selectedObject.description;
+        let mediaInput = document.querySelector("#update-media");
+        mediaInput.value = selectedObject.media;
         /* TODO add tags */
         const updateBtn = document.querySelector("#update-lot-btn");
         updateBtn.addEventListener("click", async function (event) {
@@ -112,7 +114,11 @@ function attachUpdateListeners(list) {
             description: descriptionInput.value,
           });
 
-          console.log("Current filter:", updatedLot);
+          Object.assign(updatedLot, {
+            media: mediaInput.value,
+          });
+
+          console.log("Updated Lot Object:", updatedLot);
           await updateLot(selectedObject.id, updatedLot);
           // Replace this with your fetch logic
           const updatedLots = await getProfileLots();
@@ -120,9 +126,6 @@ function attachUpdateListeners(list) {
           // Re-render the list with the updated data
           generateList(updatedLots);
         });
-
-        let mediaInput = document.querySelector("#update-media");
-        mediaInput.value = selectedObject.media;
       } else {
         console.log("Object not found");
       }
