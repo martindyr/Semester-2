@@ -1,9 +1,5 @@
-import {
-  getToken
-} from "../storage.js";
-import {
-  notification
-} from "../components/notification.js";
+import { getToken } from "../storage.js";
+import { notification } from "../components/notification.js";
 
 export async function getLots(body) {
   const url = "https://api.noroff.dev/api/v1/auction/listings";
@@ -20,10 +16,7 @@ export async function getLots(body) {
 export async function getLotDetails(id) {
   const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
   try {
-    const repsonse = await fetch(url + "?" + new URLSearchParams({
-      _seller: true,
-      _bids: true,
-    }));
+    const repsonse = await fetch(url);
     const json = await repsonse.json();
     console.log("Lot Details: ", json);
     return json;
@@ -60,19 +53,10 @@ export async function createLot(lot) {
   }
 }
 
-<<<<<<< Updated upstream
-export async function placeBid(id, amount) {
-  const parsedAmount = parseFloat(amount);
-  const url = `https://api.noroff.dev/api/v1/auction/listings/${id}/bids`;
-  const options = {
-    method: "POST",
-    body: JSON.stringify({ amount: parsedAmount }), // Convert object to JSON string
-=======
 export async function deleteLot(id) {
   const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
   const options = {
     method: "DELETE",
->>>>>>> Stashed changes
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken()}`,
@@ -80,19 +64,6 @@ export async function deleteLot(id) {
   };
   try {
     const response = await fetch(url, options);
-<<<<<<< Updated upstream
-    const json = await response.json();
-    console.log('created lot:', json);
-
-    if (json.id) {
-      notification("success", `You have placed a bid`);
-    }
-    console.log(json);
-  } catch (error) {
-    console.log("Something went wrong when placing a bid", error);
-  }
-}
-=======
 
     console.log(response);
     if (response.status === 204) {
@@ -105,6 +76,8 @@ export async function deleteLot(id) {
 
 // This function will handle the PUT request for updating an object
 export async function updateLot(id, requestData) {
+  const backDropModal = document.querySelector(".modal-backdrop");
+  const updateModal = document.querySelector("#update-lot-modal");
   const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
   const options = {
     method: "PUT",
@@ -118,10 +91,13 @@ export async function updateLot(id, requestData) {
   try {
     const response = await fetch(url, options);
     const updatedObject = await response.json();
-    console.log("Lot updated:", updatedObject);
-    return updatedObject; // Return the updated lot if needed
+    if (updatedObject.id) {
+      updateModal.style.display = "none";
+      backDropModal.style.display = "none";
+      notification("success", "You have updated your Lot");
+      return updatedObject; // Return the updated lot if needed
+    }
   } catch (error) {
     console.error("Error updating lot:", error);
   }
 }
->>>>>>> Stashed changes

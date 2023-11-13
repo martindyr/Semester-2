@@ -1,4 +1,4 @@
-import { createLot, deleteLot } from "./service/auctionListing.js";
+import { createLot, deleteLot, updateLot } from "./service/auctionListing.js";
 import { getProfileLots } from "./service/auctionProfile.js";
 
 /* Lot Form */
@@ -98,9 +98,28 @@ function attachUpdateListeners(list) {
         titleInput.value = selectedObject.title;
         let descriptionInput = document.querySelector("#update-description");
         descriptionInput.value = selectedObject.description;
-        let endingInput = document.querySelector("#update-ending");
-        endingInput.value = selectedObject.endsAt;
-        console.log(endingInput.value);
+        /* TODO add tags */
+        const updateBtn = document.querySelector("#update-lot-btn");
+        updateBtn.addEventListener("click", async function (event) {
+          event.preventDefault();
+          const updatedLot = {};
+
+          Object.assign(updatedLot, {
+            title: titleInput.value,
+          });
+
+          Object.assign(updatedLot, {
+            description: descriptionInput.value,
+          });
+
+          console.log("Current filter:", updatedLot);
+          await updateLot(selectedObject.id, updatedLot);
+          // Replace this with your fetch logic
+          const updatedLots = await getProfileLots();
+
+          // Re-render the list with the updated data
+          generateList(updatedLots);
+        });
 
         let mediaInput = document.querySelector("#update-media");
         mediaInput.value = selectedObject.media;
