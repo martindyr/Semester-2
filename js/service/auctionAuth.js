@@ -51,8 +51,6 @@ export async function login() {
 
 export async function register() {
   console.log("Running registration...");
-  const backDropModal = document.querySelector(".modal-backdrop");
-  const registerModal = document.querySelector("#registerModal");
   const emailField = document.querySelector("#register-email");
   const passwordField = document.querySelector("#register-password");
   const nameField = document.querySelector("#register-name");
@@ -81,8 +79,7 @@ export async function register() {
     const json = await repsonse.json();
     if (json.id) {
       notification("success", "Registration complete");
-      registerModal.style.display = "none";
-      backDropModal.style.display = "none";
+      $("#registerModal").modal("hide");
       console.log("Registered: ", json);
     } else {
       notification("error", "Registration failed, user exists");
