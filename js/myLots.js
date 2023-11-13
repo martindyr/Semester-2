@@ -1,4 +1,4 @@
-import { createLot } from "./service/auctionListing.js";
+import { createLot, deleteLot } from "./service/auctionListing.js";
 import { getProfileLots } from "./service/auctionProfile.js";
 
 /* Lot Form */
@@ -54,17 +54,72 @@ function generateList(list) {
     lotList.innerHTML += `
     <div class="col">
       <div class="card h-100">
-       <img src="${list[i].media[0]}" class="card-img-top" alt="Missing Image...">
-       <div class="card-body">
-         <h5 class="card-title">${list[i].title}</h5>
-         <p class="card-text">${list[i].description}</p>
-       </div>
+        <img src="${list[i].media[0]}" class="card-img-top" alt="Missing Image...">
+        <div class="card-body">
+          <h5 class="card-title">${list[i].title}</h5>
+          <p class="card-text">${list[i].description}</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button id="${list[i].id}" class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal"
+            data-bs-target="#update-lot-modal">Edit</button>
+            <button id="${list[i].id}" class="btn btn-danger" type="button">Delete</button>
+          </div>
+        </div>
        <div class="card-footer">
          <small class="text-muted">${list[i].endsAt}</small>
        </div>
       </div>
     </div>
       `;
+    attachUpdateListeners(list);
+    attachDeleteListeners();
   }
 }
+
+function attachDeleteListeners() {
+  const deleteBtns = document.querySelectorAll(".btn-danger");
+  deleteBtns.forEach((deleteBtn) => {
+    deleteBtn.addEventListener("click", async function (event) {
+      const lotId = event.target.id;
+      console.log(lotId);
+      await deleteLotAndUpdateList(lotId);
+    });
+  });
+}
+
+function attachUpdateListeners(list) {
+  const updateBtns = document.querySelectorAll(".me-md-2");
+  updateBtns.forEach((updateBtn) => {
+    updateBtn.addEventListener("click", async function (event) {
+      const lotId = event.target.id;
+      const selectedObject = list.find((obj) => obj.id === lotId);
+
+      if (selectedObject) {
+        let titleInput = document.querySelector("#update-title");
+        titleInput.value = selectedObject.title;
+        let descriptionInput = document.querySelector("#update-description");
+        descriptionInput.value = selectedObject.description;
+        let endingInput = document.querySelector("#update-ending");
+        endingInput.value = selectedObject.endsAt;
+        console.log(endingInput.value);
+
+        let mediaInput = document.querySelector("#update-media");
+        mediaInput.value = selectedObject.media;
+      } else {
+        console.log("Object not found");
+      }
+    });
+  });
+}
+
+// Function to delete the lot and update the list
+async function deleteLotAndUpdateList(lotId) {
+  await deleteLot(lotId);
+
+  // Replace this with your fetch logic
+  const updatedLots = await getProfileLots();
+
+  // Re-render the list with the updated data
+  generateList(updatedLots);
+}
+
 generateList(myLots);

@@ -60,12 +60,19 @@ export async function createLot(lot) {
   }
 }
 
+<<<<<<< Updated upstream
 export async function placeBid(id, amount) {
   const parsedAmount = parseFloat(amount);
   const url = `https://api.noroff.dev/api/v1/auction/listings/${id}/bids`;
   const options = {
     method: "POST",
     body: JSON.stringify({ amount: parsedAmount }), // Convert object to JSON string
+=======
+export async function deleteLot(id) {
+  const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
+  const options = {
+    method: "DELETE",
+>>>>>>> Stashed changes
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken()}`,
@@ -73,6 +80,7 @@ export async function placeBid(id, amount) {
   };
   try {
     const response = await fetch(url, options);
+<<<<<<< Updated upstream
     const json = await response.json();
     console.log('created lot:', json);
 
@@ -84,3 +92,36 @@ export async function placeBid(id, amount) {
     console.log("Something went wrong when placing a bid", error);
   }
 }
+=======
+
+    console.log(response);
+    if (response.status === 204) {
+      notification("success", "Lot has been deleted");
+    }
+  } catch (error) {
+    notification("error", "There was a error deleting this Lot");
+  }
+}
+
+// This function will handle the PUT request for updating an object
+export async function updateLot(id, requestData) {
+  const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`,
+    },
+    body: JSON.stringify(requestData),
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const updatedObject = await response.json();
+    console.log("Lot updated:", updatedObject);
+    return updatedObject; // Return the updated lot if needed
+  } catch (error) {
+    console.error("Error updating lot:", error);
+  }
+}
+>>>>>>> Stashed changes
