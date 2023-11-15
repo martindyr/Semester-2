@@ -1,11 +1,5 @@
-import {
-  createLot,
-  deleteLot,
-  updateLot
-} from "./service/auctionListing.js";
-import {
-  getProfileLots
-} from "./service/auctionProfile.js";
+import { createLot, deleteLot, updateLot } from "./service/auctionListing.js";
+import { getProfileLots } from "./service/auctionProfile.js";
 
 /* Lot Form */
 const lotForm = document.querySelector("form");
@@ -17,7 +11,7 @@ const mediaField = document.querySelector("#create-media");
 const lotList = document.querySelector("#lot-list");
 const myLots = await getProfileLots();
 
-lotForm.addEventListener("submit", function (event) {
+lotForm.addEventListener("submit", async function (event) {
   event.preventDefault();
   const title = titleField.value;
   const description = descriptionField.value;
@@ -47,11 +41,10 @@ lotForm.addEventListener("submit", function (event) {
       media: [media],
     });
   }
-  console.log(lot);
   createLot(lot);
 
   /* TODO re-generate list after you have posted a new lot  */
-  generateList(myLots);
+  generateList(await getProfileLots());
 });
 
 function generateList(list) {
