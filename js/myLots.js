@@ -1,5 +1,6 @@
 import { createLot, deleteLot, updateLot } from "./service/auctionListing.js";
 import { getProfileLots } from "./service/auctionProfile.js";
+import { countdown } from "./components/countdown.js";
 
 /* Lot Form */
 const lotForm = document.querySelector("form");
@@ -43,7 +44,6 @@ lotForm.addEventListener("submit", async function (event) {
   }
   createLot(lot);
 
-  /* TODO re-generate list after you have posted a new lot  */
   generateList(await getProfileLots());
 });
 
@@ -53,18 +53,42 @@ function generateList(list) {
     lotList.innerHTML += `
     <div class="col">
       <div class="card h-100">
-        <img src="${list[i].media[0]}" class="card-img-top" alt="Missing Image...">
+        <img src="${
+          list[i].media[0]
+        }" class="card-img-top" alt="Missing Image...">
         <div class="card-body">
           <h5 class="card-title">${list[i].title}</h5>
           <p class="card-text">${list[i].description}</p>
+          <div class="d-flex justify-content-between">
+            <p style="margin-bottom: 0px !important; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" 
+            class="card-text">Current bid: 
+            ${
+              list[i].bids && list[i].bids.length > 0
+                ? `${list[i].bids.slice(-1)[0].amount} by ${
+                    list[i].bids.slice(-1)[0].bidderName
+                  }`
+                : "no bids"
+            } </p>
+            <a style="white-space: nowrap;" href="lot.html?id=${
+              list[i].id
+            }">See details</a>
+          </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button id="${list[i].id}" class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal"
-            data-bs-target="#update-lot-modal">Edit</button>
-            <button id="${list[i].id}" class="btn btn-danger" type="button">Delete</button>
+            <button 
+            id="${
+              list[i].id
+            }" class="btn btn-primary me-md-2 my-3" type="button" data-bs-toggle="modal"
+            data-bs-target="#update-lot-modal">Edit
+            </button>
+            <button id="${
+              list[i].id
+            }" class="btn btn-danger my-3" type="button">Delete</button>
           </div>
         </div>
        <div class="card-footer">
-         <small class="text-muted">${list[i].endsAt}</small>
+         <small class="text-muted">${
+           countdown(list[i].endsAt).innerHTML
+         }</small>
        </div>
       </div>
     </div>

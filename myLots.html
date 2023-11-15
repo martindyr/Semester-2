@@ -26,9 +26,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                        <a class="nav-link" href="/index.html">Home</a>
                         <a class="nav-link" href="/allLots.html">All Lot's</a>
-                        <a class="nav-link logged-in" href="/myLots.html">My Lot's</a>
+                        <a class="nav-link logged-in active" aria-current="page" href="/myLots.html">My Lot's</a>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
@@ -50,7 +50,7 @@
     <main>
         <div class="container">
 
-            <button id="create-lot" type="button" class="btn btn-primary" data-bs-toggle="modal"
+            <button id="create-lot" type="button" class="btn btn-primary my-3" data-bs-toggle="modal"
                 data-bs-target="#create-lot-modal">
                 Add Lot
             </button>
@@ -108,15 +108,13 @@
                     <div class="modal-body">
                         <form id="update-lot-form">
                             <div class="mb-3">
-                                <label for="update-title" class="form-label">Title <span
-                                        class="mandatory">*</span></label>
+                                <label for="update-title" class="form-label">Title</label>
                                 <input id="update-title" type="input" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="update-description" class="form-label">Description</label>
                                 <input id="update-description" type="input" class="form-control">
                             </div>
-                            <!-- TODO add tags -->
                             <div>
                                 <label for="update-media" class="form-label">Media URL</label>
                                 <input id="update-media" type="url" class="form-control">

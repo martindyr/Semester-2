@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Playfair+Display&family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 main {
-    height: 100vh;
+    min-height: calc(100vh - 62px)
+}
+
+header {
+    height: 62px;
 }
 
 #email-feedback,
@@ -21,5 +28,3 @@ main {
 .mandatory {
     color: crimson;
 }
-
-
