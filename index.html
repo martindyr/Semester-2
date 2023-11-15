@@ -18,7 +18,8 @@
     <header>
         <nav class="navbar navbar-expand-lg sticky-top bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/index.html">Dyrsets Lot Service</a>
+                <a class="navbar-brand" href="/index.html"><img style="height: 62px; width: auto;"
+                        src="/image/lotLogo.png"></img></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -30,21 +31,22 @@
                         <a class="nav-link" href="/allLots.html">All Lot's</a>
                         <a class="nav-link logged-in" href="/myLots.html">My Lot's</a>
                     </div>
-
+                    <div class="navbar-nav">
+                        <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal" id="login-btn"
+                            data-bs-target="#loginModal">
+                            Login
+                        </button>
+                        <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
+                            data-bs-target="#registerModal">
+                            Register
+                        </button>
+                        <button id="profile-btn" type="button" class="btn btn-link logged-in " data-bs-toggle="modal"
+                            data-bs-target="#profile-modal">Profile</button>
+                        <button id="logout-btn" type="button" class="btn btn-secondary logged-in">
+                            Logout
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
-                    data-bs-target="#loginModal">
-                    Login
-                </button>
-                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
-                    data-bs-target="#registerModal">
-                    Register
-                </button>
-                <button id="profile-btn" type="button" class="btn btn-link logged-in " data-bs-toggle="modal"
-                    data-bs-target="#profile-modal">Profile</button>
-                <button id="logout-btn" type="button" class="btn btn-primary logged-in">
-                    Logout
-                </button>
             </div>
         </nav>
     </header>

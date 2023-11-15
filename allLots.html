@@ -30,27 +30,29 @@
                         <a class="nav-link active" aria-current="page" href="/allLots.html">All Lot's</a>
                         <a class="nav-link logged-in" href="/myLots.html">My Lot's</a>
                     </div>
-
+                    <div class="navbar-nav">
+                        <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal" id="login-btn"
+                            data-bs-target="#loginModal">
+                            Login
+                        </button>
+                        <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
+                            data-bs-target="#registerModal">
+                            Register
+                        </button>
+                        <button id="profile-btn" type="button" class="btn btn-link logged-in " data-bs-toggle="modal"
+                            data-bs-target="#profile-modal">Profile</button>
+                        <button id="logout-btn" type="button" class="btn btn-secondary logged-in">
+                            Logout
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal" id="login-btn"
-                    data-bs-target="#loginModal">
-                    Login
-                </button>
-                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
-                    data-bs-target="#registerModal">
-                    Register
-                </button>
-                <button id="profile-btn" type="button" class="btn btn-link logged-in " data-bs-toggle="modal"
-                    data-bs-target="#profile-modal">Profile</button>
-                <button id="logout-btn" type="button" class="btn btn-primary logged-in">
-                    Logout
-                </button>
+
             </div>
         </nav>
     </header>
     <main>
         <div class="container">
-            <div class="row py-3">
+            <div class="py-3 row-cols-xs-2 row-cols-md-2">
                 <div class="form-floating col">
                     <select class="form-input form-control" type="input" value="" id="filter-sort">
                         <option value="title">Title</option>
