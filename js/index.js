@@ -6,7 +6,6 @@ const lotList = await getLots({
   sort: "title",
   sortORder: "asc",
 });
-t;
 
 function generateCarousel() {
   console.log("running");
