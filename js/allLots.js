@@ -61,21 +61,33 @@ function generateList(lotList) {
     lotContainer.innerHTML += `
   <div class="col">
     <div class="card h-100">
-     <img src="${
+     <img style="width: 100%; height: 200px; object-fit: cover;" src="${
        lotList[i].media[0]
          ? lotList[i].media[0]
          : "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
      }" class="card-img-top" alt="Missing Image...">
-     <div class="card-body">
-       <h5 class="card-title">${lotList[i].title}</h5>
-       <p class="card-text">${lotList[i].description}</p>
-       <p class="card-text">Seller: ${lotList[i].seller.name}</p>
-       <p class="card-text">Current bid: ${
-         lotList[i].bids && lotList[i].bids.length > 0
-           ? `${lotList[i].bids.slice(-1)[0].amount} by ${lotList[i].bids.slice(-1)[0].bidderName}`
-           : "no bids"
-       } </p>
-       <a href="lot.html?id=${lotList[i].id}">See details</a>
+     <div style="padding-bottom: 0px !important" class="card-body d-flex flex-column justify-content-between">
+       <div>
+         <h5 class="card-title">${
+           lotList[i].title ? lotList[i].title : "No title"
+         }</h5>
+         <p class="card-text">${
+           lotList[i].description ? lotList[i].description : "No description"
+         }</p>
+       </div>
+       <div class="d-flex justify-content-between">
+         <p style="margin-bottom: 0px !important; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" 
+         class="card-text">Current bid: ${
+           lotList[i].bids && lotList[i].bids.length > 0
+             ? `${lotList[i].bids.slice(-1)[0].amount} by ${
+                 lotList[i].bids.slice(-1)[0].bidderName
+               }`
+             : "no bids"
+         } </p>
+         <a style="white-space: nowrap;" href="lot.html?id=${
+           lotList[i].id
+         }">See details</a>
+       </div>
      </div>
      <div class="card-footer">
        <small class="text-muted">${countdownElement.textContent}</small>
