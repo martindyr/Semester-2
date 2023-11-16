@@ -50,6 +50,8 @@ async function submit() {
 submitFilter.addEventListener("click", submit);
 
 function generateList(lotList) {
+  const placeholderImg =
+    "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
   lotContainer.innerHTML = "";
   for (let i = 0; i < lotList.length; i++) {
     /* TODO Add this to skip lots that dont have img? */
@@ -57,14 +59,11 @@ function generateList(lotList) {
       continue;
     } */
     const countdownElement = countdown(lotList[i].endsAt);
-    /* TODO set max height on images below */
     lotContainer.innerHTML += `
   <div class="col">
     <div class="card h-100">
      <img style="width: 100%; height: 200px; object-fit: cover;" src="${
-       lotList[i].media[0]
-         ? lotList[i].media[0]
-         : "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
+       lotList[i].media[0] ? lotList[i].media[0] : placeholderImg
      }" class="card-img-top" alt="Missing Image...">
      <div style="padding-bottom: 0px !important" class="card-body d-flex flex-column justify-content-between">
        <div>
