@@ -52,8 +52,8 @@
     </header>
     <main>
         <div class="container">
-            <div class="py-3 row-cols-xs-2 row-cols-md-2">
-                <div class="form-floating col">
+            <div class="py-3 row">
+                <div class="form-floating col-lg col-md-12 py-md-1">
                     <select class="form-input form-control" type="input" value="" id="filter-sort">
                         <option value="title">Title</option>
                         <option value="endsAt">Lot Ending</option>
@@ -64,7 +64,7 @@
                         Sort
                     </label>
                 </div>
-                <div class="form-floating col">
+                <div class="form-floating col-lg col-md-12  py-md-1">
                     <select class="form-input form-control" id="filter-sort-order">
                         <option selected value="asc">Ascending</option>
                         <option value="desc">Descending</option>
@@ -73,19 +73,19 @@
                         Sort Order
                     </label>
                 </div>
-                <div class="form-floating col">
+                <div class="form-floating col-lg col-md-12  py-md-1">
                     <input class="form-input form-control" type="number" value="" id="filter-limit">
                     <label class="form-check-label" for="filter-limit">
                         Limit
                     </label>
                 </div>
-                <div class="col" style="align-self: center;">
+                <div class=" col-lg col-md-12  py-md-1" style="align-self: center;">
                     <input checked class="form-check-input" type="checkbox" value="" id="filter-show-inactive">
                     <label class="form-check-label" for="filter-show-inactive">
                         Hide Inactive
                     </label>
                 </div>
-                <div class="col" style="align-self: center; display: grid;">
+                <div class="col-lg col-md-12  py-md-1" style="align-self: center; display: grid;">
                     <input id="submit-filter" class="btn btn-primary" type="submit" value="Submit Filter">
                 </div>
             </div>

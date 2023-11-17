@@ -20,6 +20,9 @@ function generateCarousel() {
       carouselImgContainer.innerHTML += `
         <div class="carousel-item ${activeClass}">
           <img src="${lotList[i].media[0]}" style="max-height: 600px; object-fit: cover" class="d-block w-100"" alt="">
+          <div class="carousel-caption d-md-block">
+            <h3 style="text-align: right">${lotList[i].title}</h3>
+          </div>
         </div>
         `;
     }
