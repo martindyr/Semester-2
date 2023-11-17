@@ -16,94 +16,100 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg sticky-top bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/index.html">Dyrsets Lot Service</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
-                        <a class="nav-link" href="/allLots.html">All Lot's</a>
-                        <a class="nav-link logged-in" href="/myLots.html">My Lot's</a>
+        <div class="container">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg sticky-top bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/index.html"><img style="height: 62px; width: auto;"
+                                src="/image/lotLogo.png"></img></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse d-lg-flex justify-content-between" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-link" aria-current="page" href="/index.html">Home</a>
+                                <a class="nav-link" href="/allLots.html">All Lot's</a>
+                                <a class="nav-link logged-in" href="/myLots.html">My Lot's</a>
+                            </div>
+                            <div class="navbar-nav">
+                                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
+                                    id="login-btn" data-bs-target="#loginModal">
+                                    Login
+                                </button>
+                                <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
+                                    data-bs-target="#registerModal">
+                                    Register
+                                </button>
+                                <button id="profile-btn" type="button" class="btn btn-link logged-in "
+                                    data-bs-toggle="modal" data-bs-target="#profile-modal">Profile</button>
+                                <button id="logout-btn" type="button" class="btn btn-secondary logged-in">
+                                    Logout
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="navbar-nav">
-                        <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal" id="login-btn"
-                            data-bs-target="#loginModal">
-                            Login
-                        </button>
-                        <button type="button" class="btn btn-primary logged-out" data-bs-toggle="modal"
-                            data-bs-target="#registerModal">
-                            Register
-                        </button>
-                        <button id="profile-btn" type="button" class="btn btn-link logged-in " data-bs-toggle="modal"
-                            data-bs-target="#profile-modal">Profile</button>
-                        <button id="logout-btn" type="button" class="btn btn-secondary logged-in">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-
+                </nav>
             </div>
-        </nav>
+        </div>
     </header>
     <main>
-        <div id="lot-details" class="container">
-            <h1 class="container" id="lot-title"></h1>
-            <div class="container" id="lot-carousel">
-                <div id="carouselExample" class="carousel slide">
-                    <div class="carousel-inner">
-                        <!-- Generated in lot.js -->
+        <div class="container pt-4">
+            <div id="lot-details" class="container">
+                <h1 class="container" id="lot-title"></h1>
+                <div class="container" id="lot-carousel">
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <!-- Generated in lot.js -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-            </div>
-            <div class="container py-5" id="lot-container">
-                <div id="bid-container" class=" pt-4 border container d-flex flex-column">
-                    <div class="container d-flex justify-content-between pb-4">
-                        <div class="container">
-                            <h5 class="fw-bold">Current bid</h5>
-                            <h4>
-                                <!-- Generated in lot.js -->
-                            </h4>
-                        </div>
-                        <div class="container" id="countdown-container">
-                            <!-- Countdown generated in JS -->
-                        </div>
-                    </div>
-                    <div class="container d-flex justify-content-between">
-                        <div class="container">
-                            <div class="logged-in form-floating col">
-                                <input class="form-input form-control" type="number" value="" id="bid-amount">
-                                <label class="form-check-label" for="bid-amount">
-                                    Bid
-                                </label>
+                <div class="container py-5" id="lot-container">
+                    <div id="bid-container" class=" pt-4 border container d-flex flex-column">
+                        <div class="container d-flex justify-content-between pb-4">
+                            <div class="container">
+                                <h5 class="fw-bold">Current bid</h5>
+                                <h4>
+                                    <!-- Generated in lot.js -->
+                                </h4>
                             </div>
-                            <div class="invalid-feedback">The bid must be greater then the current bid</div>
-                            <p class="logged-out">Login to place bid</p>
+                            <div class="container" id="countdown-container">
+                                <!-- Countdown generated in JS -->
+                            </div>
                         </div>
-                        <div class="container">
-                            <button style="height: 58px;" class="logged-in btn btn-primary w-100">Place bid</button>
+                        <div class="container d-flex justify-content-between">
+                            <div class="container">
+                                <div class="logged-in form-floating col">
+                                    <input class="form-input form-control" type="number" value="" id="bid-amount">
+                                    <label class="form-check-label" for="bid-amount">
+                                        Bid
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">The bid must be greater then the current bid</div>
+                                <p class="logged-out">Login to place bid</p>
+                            </div>
+                            <div class="container">
+                                <button style="height: 58px;" class="logged-in btn btn-primary w-100">Place bid</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="container border pt-4 ">
-                    <div class="container pb-3" id="lot-description"></div>
-                    <div class="container d-flex justify-content-between">
-                        <div id="lot-information"></div>
-                        <div id="seller-information"></div>
+                    <div class="container border pt-4 ">
+                        <div class="container pb-3" id="lot-description"></div>
+                        <div class="container d-flex justify-content-between">
+                            <div id="lot-information"></div>
+                            <div id="seller-information"></div>
+                        </div>
                     </div>
                 </div>
             </div>

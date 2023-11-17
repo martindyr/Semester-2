@@ -12,6 +12,7 @@ const lotList = await getLots({
 
 function generateCarousel() {
   console.log("running");
+
   for (let i = 0; i < lotList.length; i++) {
     if (lotList[i].media.length === 0) {
       continue;
@@ -43,6 +44,8 @@ async function generateCars(carList) {
   const placeholderImg =
     "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
   carContainer.innerHTML = "";
+  carContainer.innerHTML += `<h2 class="pt-4">Cars</h2>`;
+
   for (let i = 0; i < 3; i++) {
     /* TODO Add this to skip lots that dont have img? */
     /*     if (lotList[i].media.length === 0) {
