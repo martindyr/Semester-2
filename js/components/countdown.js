@@ -23,7 +23,7 @@ export function countdown(targetDate) {
       );
       const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-      countdownElement.textContent = `Ends in: ${days}d, ${hours}h, ${minutes}m, ${seconds}s`;
+      countdownElement.textContent = `${days}d, ${hours}h, ${minutes}m, ${seconds}s`;
     }
   }
   updateCountdown();

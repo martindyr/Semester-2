@@ -52,7 +52,7 @@
     </header>
     <main>
         <div id="lot-details" class="container">
-            <h3 id="lot-title"></h3>
+            <h1 class="container" id="lot-title"></h1>
             <div class="container" id="lot-carousel">
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
@@ -70,29 +70,43 @@
                     </button>
                 </div>
             </div>
-            <div class="container" id="lot-description"></div>
-            <hr>
-            <div class="border" id="lot-bidding">
-                <p>Current bid</p>
-                <h4>
-                    <!-- Generated in lot.js -->
-                </h4>
-                <div id="bid-container">
-                    <div class="logged-in form-floating col">
-                        <input class="form-input form-control" type="number" value="" id="bid-amount">
-                        <label class="form-check-label" for="bid-amount">
-                            Bid
-                        </label>
+            <div class="container py-5" id="lot-container">
+                <div id="bid-container" class=" pt-4 border container d-flex flex-column">
+                    <div class="container d-flex justify-content-between pb-4">
+                        <div class="container">
+                            <h5 class="fw-bold">Current bid</h5>
+                            <h4>
+                                <!-- Generated in lot.js -->
+                            </h4>
+                        </div>
+                        <div class="container" id="countdown-container">
+                            <!-- Countdown generated in JS -->
+                        </div>
                     </div>
-                    <div class="invalid-feedback">The bid must be greater then the current bid</div>
-                    <p class="logged-out">Login to place bid</p>
-                    <button class="logged-in btn btn-primary">Place bid</button>
+                    <div class="container d-flex justify-content-between">
+                        <div class="container">
+                            <div class="logged-in form-floating col">
+                                <input class="form-input form-control" type="number" value="" id="bid-amount">
+                                <label class="form-check-label" for="bid-amount">
+                                    Bid
+                                </label>
+                            </div>
+                            <div class="invalid-feedback">The bid must be greater then the current bid</div>
+                            <p class="logged-out">Login to place bid</p>
+                        </div>
+                        <div class="container">
+                            <button style="height: 58px;" class="logged-in btn btn-primary w-100">Place bid</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container border pt-4 ">
+                    <div class="container pb-3" id="lot-description"></div>
+                    <div class="container d-flex justify-content-between">
+                        <div id="lot-information"></div>
+                        <div id="seller-information"></div>
+                    </div>
                 </div>
             </div>
-            <hr>
-            <div id="lot-information"></div>
-            <hr>
-            <div id="seller-information"></div>
         </div>
         <!-- Login Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">

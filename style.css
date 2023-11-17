@@ -28,3 +28,8 @@ header {
 .mandatory {
     color: crimson;
 }
+
+#lot-container {
+    display: flex;
+    justify-content: space-between;
+}

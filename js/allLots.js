@@ -66,17 +66,21 @@ function generateList(lotList) {
        lotList[i].media[0] ? lotList[i].media[0] : placeholderImg
      }" class="card-img-top" alt="Missing Image...">
      <div style="padding-bottom: 0px !important" class="card-body d-flex flex-column justify-content-between">
-       <div>
+       <div class="pb-4">
          <h5 class="card-title">${
            lotList[i].title ? lotList[i].title : "No title"
          }</h5>
-         <p class="card-text">${
+         <p style="    overflow: hidden;
+         display: -webkit-box;
+         -webkit-line-clamp: 3; /* Adjust the number of lines to your needs */
+         -webkit-box-orient: vertical;
+         max-height: 70px;" class="card-text">${
            lotList[i].description ? lotList[i].description : "No description"
          }</p>
        </div>
-       <div class="d-flex justify-content-between">
+       <div class="d-flex justify-content-between pb-2">
          <p style="margin-bottom: 0px !important; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" 
-         class="card-text">Current bid: ${
+         class="card-text ellipsis">Current bid: ${
            lotList[i].bids && lotList[i].bids.length > 0
              ? `${lotList[i].bids.slice(-1)[0].amount} by ${
                  lotList[i].bids.slice(-1)[0].bidderName
