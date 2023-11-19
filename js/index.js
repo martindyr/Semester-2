@@ -34,6 +34,8 @@ async function getCars() {
   console.log("Getting cars");
   const carList = await getLots({
     _tag: "car",
+    _bids: true,
+  
   });
   console.log("CarList:", carList);
   return carList;
@@ -59,23 +61,21 @@ async function generateCars(carList) {
          carList[i].media[0] ? carList[i].media[0] : placeholderImg
        }" class="card-img-top" alt="Missing Image...">
        <div style="padding-bottom: 0px !important" class="card-body d-flex flex-column justify-content-between">
-         <div>
-           <h5 class="card-title">${
-             carList[i].title ? carList[i].title : "No title"
-           }</h5>
+         <div  class="pb-4">
+         <h5 class="card-title fw-bold">${
+          lotList[i].title ? lotList[i].title : "No title"
+        }</h5>
            <p class="card-text">${
              carList[i].description ? carList[i].description : "No description"
            }</p>
          </div>
-         <div class="d-flex justify-content-between">
+         <div class="d-flex justify-content-between pb-2">
            <p style="margin-bottom: 0px !important; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"
            class="card-text">Current bid: ${
-             carList[i].bids && carList[i].bids.length > 0
-               ? `${carList[i].bids.slice(-1)[0].amount} by ${
-                   carList[i].bids.slice(-1)[0].bidderName
-                 }`
-               : "no bids"
-           } </p>
+           carList[i].bids && carList[i].bids.length > 0
+             ? `<span class="fw-bold">${carList[i].bids.slice(-1)[0].amount} Credits</span>`
+             : `<span class="fw-bold">No bids</span>`
+         } </p>
            <a style="white-space: nowrap;" href="lot.html?id=${
              carList[i].id
            }">See details</a>

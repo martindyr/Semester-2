@@ -1,10 +1,15 @@
-import { getLotDetails } from "./service/auctionListing.js";
+import {
+  placeBid,
+  getLotDetails, 
+} from "./service/auctionListing.js";
 
-import { placeBid } from "./service/auctionListing.js";
+import {
+  countdown
+} from "./components/countdown.js";
 
-import { countdown } from "./components/countdown.js";
-
-import { formatDate } from "./components/formatDate.js";
+import {
+  formatDate
+} from "./components/formatDate.js";
 
 const titleField = document.querySelector("#lot-title");
 const countdownContainer = document.querySelector("#countdown-container");
@@ -95,6 +100,7 @@ async function generateLotDetails() {
 bidBtn.addEventListener("click", async function () {
   const bidAmount = document.querySelector("#bid-amount").value;
   const lotId = lot.id;
+  console.log(bidAmount, lotId)
   if (bidAmount) {
     await placeBid(lotId, bidAmount);
     invalidFeedback.style.display = "none";

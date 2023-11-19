@@ -50,7 +50,7 @@ export async function placeBid(id, amount) {
     if (json.id) {
       notification("success", `You have placed a bid`);
     }
-    console.log(json);
+    notification('error', `${json.errors[0].message}`);
   } catch (error) {
     console.log("Something went wrong when placing a bid", error);
   }

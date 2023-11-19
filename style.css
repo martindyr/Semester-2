@@ -14,6 +14,19 @@ header {
     height: 62px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+nav {
+    background-color: #fff;
+}
+
 #email-feedback,
 #password-feedback,
 #name-feedback {
@@ -32,4 +45,22 @@ header {
 #lot-container {
     display: flex;
     justify-content: space-between;
+}
+
+.active {
+    color: #5aafeb !important;
+}
+
+.btn-primary {
+    background-color: #5aafeb !important;
+    border-color: #fff !important;
+}
+
+.btn-primary:hover {
+    background-color: #498fc2 !important;
+}
+
+.form-check-input:checked {
+    background-color: #5aafeb !important;
+    border-color: #5aafeb !important;
 }

@@ -1,6 +1,14 @@
-import { createLot, deleteLot, updateLot } from "./service/auctionListing.js";
-import { getProfileLots } from "./service/auctionProfile.js";
-import { countdown } from "./components/countdown.js";
+import {
+  createLot,
+  deleteLot,
+  updateLot
+} from "./service/auctionListing.js";
+import {
+  getProfileLots
+} from "./service/auctionProfile.js";
+import {
+  countdown
+} from "./components/countdown.js";
 
 /* Lot Form */
 const lotForm = document.querySelector("form");
@@ -10,7 +18,9 @@ const endingField = document.querySelector("#create-ending");
 const mediaField = document.querySelector("#create-media");
 
 const lotList = document.querySelector("#lot-list");
-const myLots = await getProfileLots();
+const myLots = await getProfileLots({
+  _bids: true,
+});
 
 lotForm.addEventListener("submit", async function (event) {
   event.preventDefault();
@@ -44,7 +54,8 @@ lotForm.addEventListener("submit", async function (event) {
   }
   createLot(lot);
 
-  generateList(await getProfileLots());
+  const updatedList = await getProfileLots()
+  generateList(updatedList);
 });
 
 function generateList(list) {
@@ -53,22 +64,21 @@ function generateList(list) {
     lotList.innerHTML += `
     <div class="col">
       <div class="card h-100">
-        <img src="${
+        <img style="width: 100%; height: 200px; object-fit: cover;" src="${
           list[i].media[0]
         }" class="card-img-top" alt="Missing Image...">
         <div class="card-body">
-          <h5 class="card-title">${list[i].title}</h5>
+        <h5 class="card-title fw-bold">${
+          list[i].title ? list[i].title : "No title"
+        }</h5>
           <p class="card-text">${list[i].description}</p>
-          <div class="d-flex justify-content-between">
-            <p style="margin-bottom: 0px !important; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" 
-            class="card-text">Current bid: 
-            ${
-              list[i].bids && list[i].bids.length > 0
-                ? `${list[i].bids.slice(-1)[0].amount} by ${
-                    list[i].bids.slice(-1)[0].bidderName
-                  }`
-                : "no bids"
-            } </p>
+          <div class="d-flex justify-content-between pb-2">
+          <p style="margin-bottom: 0px !important; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;" 
+          class="card-text ellipsis">Current bid: ${
+            list[i].bids && list[i].bids.length > 0
+              ? `<span class="fw-bold">${list[i].bids.slice(-1)[0].amount} Credits</span>`
+              : `<span class="fw-bold">No bids</span>`
+          } </p>
             <a style="white-space: nowrap;" href="lot.html?id=${
               list[i].id
             }">See details</a>
