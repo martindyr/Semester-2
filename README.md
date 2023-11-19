@@ -23,7 +23,7 @@ This is my Semester project 2. This website is based on HTML, CSS and JS, suppor
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/martindyr/Science-community-museum.git
+git clone https://github.com/martindyr/Semester-2.git
 ```
 
 ### Running
