@@ -34,6 +34,10 @@ nav {
     color: red;
 }
 
+#seller-information {
+    padding-left: 10px;
+}
+
 .notification {
     z-index: 2000 !important;
 }
